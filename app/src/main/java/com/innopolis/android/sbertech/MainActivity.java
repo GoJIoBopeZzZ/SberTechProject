@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.innopolis.android.sbertech.models.Character;
 import com.innopolis.android.sbertech.models.FlickrFetcher;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +81,13 @@ public class MainActivity extends AppCompatActivity {
     private class FetchItemTask extends AsyncTask<Void, Void, List<Character>> {
         @Override
         protected List<Character> doInBackground(Void... voids) {
-            return new FlickrFetcher().fetchItems();
+            URL url = null;
+            try {
+                url = new URL("https://anapioficeandfire.com/api/characters/1");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            return new FlickrFetcher().fetchItems(url);
         }
 
         @Override
