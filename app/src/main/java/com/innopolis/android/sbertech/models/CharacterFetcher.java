@@ -1,6 +1,7 @@
 package com.innopolis.android.sbertech.models;
 
 import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,12 +14,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlickrFetcher {
+/**
+ * Created by _red_ on 21.07.17.
+ */
 
-    /**
-     * Created by _red_ on 06.07.17.
-     */
-
+public class CharacterFetcher {
     private static final String TAG = "FlickrFetcher";
 
     public String getJSONString(URL url) throws IOException {
@@ -55,13 +55,12 @@ public class FlickrFetcher {
         try {
             String jsonString = getJSONString(url);
             JSONObject jsonBody = new JSONObject(jsonString);
+            parseItem(characters, jsonBody);
             Log.d(TAG , jsonBody.toString());
         } catch (IOException ex) {
             Log.e(TAG , "Ошибка загрузки данных", ex);
-            return characters;
         } catch (JSONException jex) {
             Log.e(TAG , "Empty JSON", jex);
-            return characters;
         }
 
         return characters;
@@ -72,9 +71,11 @@ public class FlickrFetcher {
 
         Character item = new Character();
         item.setName(object.getString("name"));
-        Log.e(TAG , item.getName());
+        Log.d(TAG , item.getName());
+        item.setGender(object.getString("gender"));
+        Log.d(TAG , item.getGender());
         item.setBirthday(object.getString("born"));
-        Log.e(TAG , item.getBirthday());
+        Log.d(TAG , item.getBirthday());
         items.add(item);
     }
 }

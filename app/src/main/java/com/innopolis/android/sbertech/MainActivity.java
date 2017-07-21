@@ -3,7 +3,6 @@ package com.innopolis.android.sbertech;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.innopolis.android.sbertech.models.Character;
-import com.innopolis.android.sbertech.models.FlickrFetcher;
+import com.innopolis.android.sbertech.models.CharacterFetcher;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -83,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
         protected List<Character> doInBackground(Void... voids) {
             URL url = null;
             try {
-                url = new URL("https://anapioficeandfire.com/api/characters/1");
+                url = new URL("https://anapioficeandfire.com/api/characters/583");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            return new FlickrFetcher().fetchItems(url);
+            return new CharacterFetcher().fetchItems(url);
         }
 
         @Override
