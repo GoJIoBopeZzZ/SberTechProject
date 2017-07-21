@@ -32,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        new FetchItemTask().execute();
-
-        setAdapter();
+        getSupportLoaderManager().initLoader(0, null, this);
     }
 
     private class PhotoHolder extends RecyclerView.ViewHolder {

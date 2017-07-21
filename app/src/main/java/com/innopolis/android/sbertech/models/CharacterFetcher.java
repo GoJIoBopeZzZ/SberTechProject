@@ -70,12 +70,14 @@ public class CharacterFetcher {
             throws IOException, JSONException {
 
         Character item = new Character();
+
         item.setName(object.getString("name"));
-        Log.d(TAG , item.getName());
         item.setGender(object.getString("gender"));
-        Log.d(TAG , item.getGender());
+        item.setCulture(object.getString("culture"));
         item.setBirthday(object.getString("born"));
-        Log.d(TAG , item.getBirthday());
+        item.setDied(object.getString("died"));
+
         items.add(item);
+        Log.d(TAG , "Adds object - " + object.toString());
     }
 }

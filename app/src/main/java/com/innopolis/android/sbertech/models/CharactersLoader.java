@@ -22,7 +22,7 @@ public class CharactersLoader extends AsyncTaskLoader<List<Character>> {
 
     static {
         try {
-            lentaRssUrl = new URL("https://lenta.ru/rss/news/russia ");
+            lentaRssUrl = new URL("https://anapioficeandfire.com/api/characters/");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
