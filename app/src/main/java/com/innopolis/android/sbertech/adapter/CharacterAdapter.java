@@ -60,10 +60,10 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         final String EXTRA_ARTICLE_DESCTIPTION = "DESCRIPTION";
         final String EXTRA_ARTICLE_IMAGE_URL = "URL";
 
-        TextView tvTitle;
-        TextView tvBody;
-        TextView tvDate;
-        ImageView ivImage;
+        TextView tvName;
+        TextView tvGender;
+        TextView tvBorn;
+        TextView ivDied;
 
         String link;
         String url;
@@ -71,9 +71,9 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         CharacterHolder(View itemView) {
             super(itemView);
 
-            tvTitle = itemView.findViewById(R.id.title_article);
-            tvBody = itemView.findViewById(R.id.body_article);
-            ivImage = itemView.findViewById(R.id.image_article);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvGender = itemView.findViewById(R.id.body_article);
+            tvBorn = itemView.findViewById(R.id.image_article);
             itemView.setOnClickListener(this);
             tvDate = itemView.findViewById(R.id.date_article);
         }
