@@ -21,14 +21,16 @@ import java.util.List;
 public class CharacterFetcher {
     private static final String TAG = "FlickrFetcher";
 
-    public String getJSONString(URL url) throws IOException {
+    public String getJSONString(String url) throws IOException {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJson = "";
 
+        URL urlRes = new URL(url);
+
         try {
-            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection = (HttpURLConnection) urlRes.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
@@ -50,34 +52,31 @@ public class CharacterFetcher {
         return resultJson;
     }
 
-    public List<Character> fetchItems(URL url) {
-        List<Character> characters = new ArrayList<>();
+    public Character fetchItems(String url) {
+        Character character = new Character();
         try {
             String jsonString = getJSONString(url);
             JSONObject jsonBody = new JSONObject(jsonString);
-            parseItem(characters, jsonBody);
-            Log.d(TAG , jsonBody.toString());
+            parseItem(character, jsonBody);
         } catch (IOException ex) {
             Log.e(TAG , "Ошибка загрузки данных", ex);
         } catch (JSONException jex) {
             Log.e(TAG , "Empty JSON", jex);
         }
 
-        return characters;
+        return character;
     }
 
-    private void parseItem(List<Character> items, JSONObject object)
+    private void parseItem(Character item, JSONObject object)
             throws IOException, JSONException {
 
-        Character item = new Character();
-
+        item.setTitle(object.getString("titles"));
         item.setName(object.getString("name"));
         item.setGender(object.getString("gender"));
         item.setCulture(object.getString("culture"));
         item.setBirthday(object.getString("born"));
         item.setDied(object.getString("died"));
 
-        items.add(item);
         Log.d(TAG , "Adds object - " + object.toString());
     }
 }

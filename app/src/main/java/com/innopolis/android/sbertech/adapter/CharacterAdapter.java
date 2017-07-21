@@ -1,21 +1,16 @@
 package com.innopolis.android.sbertech.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.innopolis.android.sbertech.R;
 import com.innopolis.android.sbertech.models.Character;
+import com.innopolis.android.sbertech.models.CharacterFetcher;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -55,52 +50,34 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
 
     class CharacterHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        final String TAG = "ArticleHolder";
-        final String EXTRA_ARTICLE_TITLE = "TITLE";
-        final String EXTRA_ARTICLE_DESCTIPTION = "DESCRIPTION";
-        final String EXTRA_ARTICLE_IMAGE_URL = "URL";
+        private final String TAG = "ArticleHolder";
 
-        TextView tvName;
-        TextView tvGender;
-        TextView tvBorn;
-        TextView ivDied;
-
-        String link;
-        String url;
+        private TextView tvTitle;
+        private TextView tvName;
+        private TextView tvGender;
+        private TextView tvCulture;
+        private TextView tvBorn;
+        private TextView tvDied;
 
         CharacterHolder(View itemView) {
             super(itemView);
 
+            tvTitle = itemView.findViewById(R.id.tvTitle);
             tvName = itemView.findViewById(R.id.tvName);
-            tvGender = itemView.findViewById(R.id.body_article);
-            tvBorn = itemView.findViewById(R.id.image_article);
-            itemView.setOnClickListener(this);
-            tvDate = itemView.findViewById(R.id.date_article);
+            tvGender = itemView.findViewById(R.id.tvGender);
+            tvCulture = itemView.findViewById(R.id.tvCulture);
+            tvBorn = itemView.findViewById(R.id.tvBorn);
+            tvDied = itemView.findViewById(R.id.tvDied);
         }
 
         void bindData(Character entry) {
-//            DrawableLoader loader = new DrawableLoader(context, entries);
-//            loader.execute();
+            tvTitle.setText(tvName.getText() + "entry.getTitle());
+            tvName.setText(entry.getName());
+            tvGender.setText(entry.getGender());
+            tvCulture.setText(entry.getCulture());
+            tvBorn.setText(entry.getBirthday());
+            tvDied.setText(entry.getDied());
 
-//            tvTitle.setText(entry.getTitle());
-//            tvBody.setText(entry.getBody());
-//            tvDate.setText(entry.getDate());
-//            ivImage.setImageDrawable(entry.getImage());
-//            this.url = entry.getImageRes();
-//            link = entry.getLink();
-
-        }
-
-        private Drawable LoadImage(String URL) {
-            Drawable drawable = null;
-            InputStream is = null;
-            try {
-                is = (InputStream) new URL(URL).getContent();
-                drawable = Drawable.createFromStream(is, "src");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return drawable;
         }
 
         @Override

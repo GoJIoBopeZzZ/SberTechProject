@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SberTech</string>
+    <string name="title">Title</string>
+    <string name="name">Name: </string>
+    <string name="gender">Gender: </string>
+    <string name="culture">Culture: </string>
+    <string name="born">Born: </string>
+    <string name="died">Died: </string>
 </resources>

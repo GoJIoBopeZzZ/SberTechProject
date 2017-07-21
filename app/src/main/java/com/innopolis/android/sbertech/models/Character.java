@@ -14,6 +14,8 @@ public class Character {
     private String culture;
     private String birthday;
     private String died;
+    private String title;
+    private String aliase;
     private List<String> titles;
     private List<String> aliases;
 
@@ -87,5 +89,21 @@ public class Character {
 
     public void setAliases(List<String> aliases) {
         this.aliases = aliases;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAliase() {
+        return aliase;
+    }
+
+    public void setAliase(String aliase) {
+        this.aliase = aliase;
     }
 }
