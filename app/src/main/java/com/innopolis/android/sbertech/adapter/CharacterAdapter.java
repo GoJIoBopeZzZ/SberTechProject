@@ -1,13 +1,16 @@
 package com.innopolis.android.sbertech.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.innopolis.android.sbertech.CharacterDetails;
 import com.innopolis.android.sbertech.R;
 import com.innopolis.android.sbertech.models.Character;
 import com.innopolis.android.sbertech.tasks.CharactersFactory;
@@ -40,9 +43,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     public void onBindViewHolder(CharacterHolder holder, int position) {
         holder.bindData(entries.get(position));
         if (position > entries.size() - 10) {
-            CharactersFactory charactersFactory =
-                    new CharactersFactory(this.context, entries, resource);
-            charactersFactory.execute();
+            new CharactersFactory(context, entries, resource).execute();
         }
     }
 
@@ -60,6 +61,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         private TextView tvCulture;
         private TextView tvBorn;
         private TextView tvDied;
+        private ImageView ivPhoto;
 
         CharacterHolder(View itemView) {
             super(itemView);
@@ -69,7 +71,9 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             tvCulture = itemView.findViewById(R.id.tvCulture);
             tvBorn = itemView.findViewById(R.id.tvBorn);
             tvDied = itemView.findViewById(R.id.tvDied);
-            Log.d(TAG, "Create new CharacterHolder");
+            ivPhoto = itemView.findViewById(R.id.ivPhoto);
+            ivPhoto.setOnClickListener(this);
+            Log.d(TAG, "Created new CharacterHolder");
         }
 
         void bindData(Character entry) {
@@ -78,16 +82,16 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             tvCulture.setText(entry.getCulture());
             tvBorn.setText(entry.getBirthday());
             tvDied.setText(entry.getDied());
-            Log.d(TAG, "Entry added!");
+            Log.d(TAG, "Entry added!" + entry.getUrl());
         }
 
         @Override
         public void onClick(View view) {
-//                Intent intent = new Intent(view.getContext(), ArticleDetails.class);
+                Intent intent = new Intent(view.getContext(), CharacterDetails.class);
 //                intent.putExtra(EXTRA_TITLE, tvTitle.getText().toString());
 //                intent.putExtra(EXTRA_DESCTIPTION, tvBody.getText().toString());
 //                intent.putExtra(EXTRA_IMAGE_URL, url);
-//                context.startActivity(intent);
+                context.startActivity(intent);
         }
     }
 }

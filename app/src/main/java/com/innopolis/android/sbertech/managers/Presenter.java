@@ -8,12 +8,13 @@ import java.util.List;
  */
 
 public class Presenter {
-    private final static Presenter INSTANCE = new Presenter();
-    public final static Presenter getInstance() {
-        return INSTANCE;
+
+    public static class PresenterHolder {
+        public static final Presenter HOLDER_INSTANCE = new Presenter();
     }
 
-    private Presenter() {
+    public static Presenter getInstance() {
+        return PresenterHolder.HOLDER_INSTANCE;
     }
 
     private List<Character> mCharacters = new ArrayList<>(100);

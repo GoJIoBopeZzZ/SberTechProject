@@ -2,6 +2,7 @@ package com.innopolis.android.sbertech.models;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,13 +12,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by _red_ on 21.07.17.
  */
 
 public class CharacterFetcher {
-    private static final String TAG = "FlickrFetcher";
+    private static final String TAG = "CharacterFetcher";
 
     public String getJSONString(String url) throws IOException {
 
@@ -68,13 +72,32 @@ public class CharacterFetcher {
     private void parseItem(Character item, JSONObject object)
             throws IOException, JSONException {
 
-//        item.setTitle(object.getString("titles"));
+        item.setUrl(object.getString("url"));
+        item.setSpouse(object.getString("spouse"));
         item.setName(object.getString("name"));
         item.setGender(object.getString("gender"));
+        item.setMother(object.getString("mother"));
+        item.setFather(object.getString("father"));
         item.setCulture(object.getString("culture"));
         item.setBirthday(object.getString("born"));
         item.setDied(object.getString("died"));
+        item.setAliases(parseArrayItems(object, "aliases"));
+        item.setTitles(parseArrayItems(object, "titles"));
+        item.setAllegiances(parseArrayItems(object, "allegiances"));
+        item.setBooks(parseArrayItems(object, "books"));
+        item.setPlayedBy(parseArrayItems(object, "playedBy"));
+        item.setPovBooks(parseArrayItems(object, "povBooks"));
+        item.setTvSeries(parseArrayItems(object, "tvSeries"));
+        Log.d(TAG , "Adds object - " + object.getString("url"));
+    }
 
-        Log.d(TAG , "Adds object - " + object.toString());
+    private List<String> parseArrayItems(JSONObject object, String str)
+            throws IOException, JSONException {
+        List<String> list = new ArrayList<>();
+        JSONArray titlesJsonArray = object.getJSONArray(str);
+        for (int i = 0; i < titlesJsonArray.length(); i++) {
+            list.add(titlesJsonArray.getString(i));
+        }
+        return list;
     }
 }
