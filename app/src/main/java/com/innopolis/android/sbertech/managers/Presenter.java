@@ -7,13 +7,13 @@ import java.util.List;
  * Created by _red_ on 21.07.17.
  */
 
-public class CharacterManager {
-    private final static CharacterManager INSTANCE = new CharacterManager();
-    public final static CharacterManager getInstance() {
+public class Presenter {
+    private final static Presenter INSTANCE = new Presenter();
+    public final static Presenter getInstance() {
         return INSTANCE;
     }
 
-    private CharacterManager() {
+    private Presenter() {
     }
 
     private List<Character> mCharacters = new ArrayList<>(100);

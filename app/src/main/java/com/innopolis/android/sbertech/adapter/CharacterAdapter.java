@@ -20,6 +20,7 @@ import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterHolder> {
     private Context context;
+    private final String TAG = "CharacterAdapter";
     private final String resource = "https://anapioficeandfire.com/api/characters/";
     private List<Character> entries;
 
@@ -40,7 +41,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         holder.bindData(entries.get(position));
         if (position > entries.size() - 10) {
             CharactersFactory charactersFactory =
-                    new CharactersFactory(this.context, entries, resource, 10);
+                    new CharactersFactory(this.context, entries, resource);
             charactersFactory.execute();
         }
     }
@@ -48,11 +49,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     @Override
     public int getItemCount() {
         return entries.size();
-    }
-
-    public void updateEntries(List<Character> entries) {
-        this.entries = entries;
-        notifyDataSetChanged();
     }
 
     class CharacterHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -73,6 +69,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             tvCulture = itemView.findViewById(R.id.tvCulture);
             tvBorn = itemView.findViewById(R.id.tvBorn);
             tvDied = itemView.findViewById(R.id.tvDied);
+            Log.d(TAG, "Create new CharacterHolder");
         }
 
         void bindData(Character entry) {
@@ -87,9 +84,9 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         @Override
         public void onClick(View view) {
 //                Intent intent = new Intent(view.getContext(), ArticleDetails.class);
-//                intent.putExtra(EXTRA_ARTICLE_TITLE, tvTitle.getText().toString());
-//                intent.putExtra(EXTRA_ARTICLE_DESCTIPTION, tvBody.getText().toString());
-//                intent.putExtra(EXTRA_ARTICLE_IMAGE_URL, url);
+//                intent.putExtra(EXTRA_TITLE, tvTitle.getText().toString());
+//                intent.putExtra(EXTRA_DESCTIPTION, tvBody.getText().toString());
+//                intent.putExtra(EXTRA_IMAGE_URL, url);
 //                context.startActivity(intent);
         }
     }

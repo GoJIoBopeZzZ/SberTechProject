@@ -29,8 +29,9 @@ public class CharactersActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new CharacterAdapter(this, items));
 
-        CharactersFactory charactersFactory = new CharactersFactory(this, items, resourceURL, 10);
+        CharactersFactory charactersFactory = new CharactersFactory(this, items, resourceURL);
         charactersFactory.execute();
     }
 }
