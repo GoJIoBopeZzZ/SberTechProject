@@ -7,6 +7,8 @@ import java.util.List;
  */
 
 public class Character {
+    private String url;
+    private String spouse;
     private String name;
     private String mother;
     private String father;
@@ -14,10 +16,13 @@ public class Character {
     private String culture;
     private String birthday;
     private String died;
-    private String title;
-    private String aliase;
     private List<String> titles;
     private List<String> aliases;
+    private List<String> allegiances;
+    private List<String> books;
+    private List<String> povBooks;
+    private List<String> tvSeries;
+    private List<String> playedBy;
 
     public String getName() {
         return name;
@@ -91,19 +96,59 @@ public class Character {
         this.aliases = aliases;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUrl() {
+        return url;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getAliase() {
-        return aliase;
+    public String getSpouse() {
+        return spouse;
     }
 
-    public void setAliase(String aliase) {
-        this.aliase = aliase;
+    public void setSpouse(String spouse) {
+        this.spouse = spouse;
+    }
+
+    public List<String> getAllegiances() {
+        return allegiances;
+    }
+
+    public void setAllegiances(List<String> allegiances) {
+        this.allegiances = allegiances;
+    }
+
+    public List<String> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<String> books) {
+        this.books = books;
+    }
+
+    public List<String> getPovBooks() {
+        return povBooks;
+    }
+
+    public void setPovBooks(List<String> povBooks) {
+        this.povBooks = povBooks;
+    }
+
+    public List<String> getTvSeries() {
+        return tvSeries;
+    }
+
+    public void setTvSeries(List<String> tvSeries) {
+        this.tvSeries = tvSeries;
+    }
+
+    public List<String> getPlayedBy() {
+        return playedBy;
+    }
+
+    public void setPlayedBy(List<String> playedBy) {
+        this.playedBy = playedBy;
     }
 }

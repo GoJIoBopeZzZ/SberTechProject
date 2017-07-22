@@ -7,13 +7,13 @@ import java.util.List;
  * Created by _red_ on 21.07.17.
  */
 
-public class Manager {
-    private final static Manager INSTANCE = new Manager();
-    public final static Manager getInstance() {
+public class CharacterManager {
+    private final static CharacterManager INSTANCE = new CharacterManager();
+    public final static CharacterManager getInstance() {
         return INSTANCE;
     }
 
-    private Manager() {
+    private CharacterManager() {
     }
 
     private List<Character> mCharacters = new ArrayList<>(100);

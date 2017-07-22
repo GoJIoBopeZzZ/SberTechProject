@@ -11,8 +11,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by _red_ on 21.07.17.
@@ -70,7 +68,7 @@ public class CharacterFetcher {
     private void parseItem(Character item, JSONObject object)
             throws IOException, JSONException {
 
-        item.setTitle(object.getString("titles"));
+//        item.setTitle(object.getString("titles"));
         item.setName(object.getString("name"));
         item.setGender(object.getString("gender"));
         item.setCulture(object.getString("culture"));

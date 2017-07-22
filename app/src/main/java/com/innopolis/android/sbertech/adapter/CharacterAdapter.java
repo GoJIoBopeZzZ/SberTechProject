@@ -2,6 +2,7 @@ package com.innopolis.android.sbertech.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 
 import com.innopolis.android.sbertech.R;
 import com.innopolis.android.sbertech.models.Character;
-import com.innopolis.android.sbertech.models.CharacterFetcher;
+import com.innopolis.android.sbertech.tasks.CharactersFactory;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterHolder> {
     private Context context;
+    private final String resource = "https://anapioficeandfire.com/api/characters/";
     private List<Character> entries;
 
     public CharacterAdapter(Context context, List<Character> entries) {
@@ -36,6 +38,11 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     @Override
     public void onBindViewHolder(CharacterHolder holder, int position) {
         holder.bindData(entries.get(position));
+        if (position > entries.size() - 10) {
+            CharactersFactory charactersFactory =
+                    new CharactersFactory(this.context, entries, resource, 10);
+            charactersFactory.execute();
+        }
     }
 
     @Override
@@ -52,7 +59,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
 
         private final String TAG = "ArticleHolder";
 
-        private TextView tvTitle;
         private TextView tvName;
         private TextView tvGender;
         private TextView tvCulture;
@@ -62,7 +68,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         CharacterHolder(View itemView) {
             super(itemView);
 
-            tvTitle = itemView.findViewById(R.id.tvTitle);
             tvName = itemView.findViewById(R.id.tvName);
             tvGender = itemView.findViewById(R.id.tvGender);
             tvCulture = itemView.findViewById(R.id.tvCulture);
@@ -71,13 +76,12 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         }
 
         void bindData(Character entry) {
-            tvTitle.setText(tvName.getText() + "entry.getTitle());
             tvName.setText(entry.getName());
             tvGender.setText(entry.getGender());
             tvCulture.setText(entry.getCulture());
             tvBorn.setText(entry.getBirthday());
             tvDied.setText(entry.getDied());
-
+            Log.d(TAG, "Entry added!");
         }
 
         @Override
