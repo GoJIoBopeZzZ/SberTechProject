@@ -6,4 +6,5 @@
     <string name="culture">Culture: </string>
     <string name="born">Born: </string>
     <string name="died">Died: </string>
+    <string name="personal_photo_of_the_character">Personal photo of the character</string>
 </resources>

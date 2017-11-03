@@ -1,17 +1,12 @@
 package com.innopolis.android.sbertech;
 
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.innopolis.android.sbertech.adapter.CharacterAdapter;
 import com.innopolis.android.sbertech.models.Character;
-import com.innopolis.android.sbertech.models.CharacterFetcher;
 import com.innopolis.android.sbertech.tasks.CharactersFactory;
-
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

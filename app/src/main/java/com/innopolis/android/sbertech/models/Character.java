@@ -1,12 +1,15 @@
 package com.innopolis.android.sbertech.models;
 
+import com.innopolis.android.sbertech.models.impl.CharacterData;
+import com.innopolis.android.sbertech.models.impl.StringBuilderFromList;
+
 import java.util.List;
 
 /**
  * Created by _red_ on 21.07.17.
  */
 
-public class Character {
+public class Character implements CharacterData {
     private String url;
     private String spouse;
     private String name;
@@ -21,9 +24,10 @@ public class Character {
     private List<String> allegiances;
     private List<String> books;
     private List<String> povBooks;
-    private List<String> tvSeries;
+    private List<String> series;
     private List<String> playedBy;
 
+    @Override
     public String getName() {
         return name;
     }
@@ -32,6 +36,7 @@ public class Character {
         this.name = name;
     }
 
+    @Override
     public String getMother() {
         return mother;
     }
@@ -40,6 +45,7 @@ public class Character {
         this.mother = mother;
     }
 
+    @Override
     public String getFather() {
         return father;
     }
@@ -48,6 +54,7 @@ public class Character {
         this.father = father;
     }
 
+    @Override
     public String getGender() {
         return gender;
     }
@@ -56,6 +63,7 @@ public class Character {
         this.gender = gender;
     }
 
+    @Override
     public String getCulture() {
         return culture;
     }
@@ -64,6 +72,7 @@ public class Character {
         this.culture = culture;
     }
 
+    @Override
     public String getBirthday() {
         return birthday;
     }
@@ -72,6 +81,7 @@ public class Character {
         this.birthday = birthday;
     }
 
+    @Override
     public String getDied() {
         return died;
     }
@@ -80,6 +90,7 @@ public class Character {
         this.died = died;
     }
 
+    @Override
     public List<String> getTitles() {
         return titles;
     }
@@ -88,6 +99,7 @@ public class Character {
         this.titles = titles;
     }
 
+    @Override
     public List<String> getAliases() {
         return aliases;
     }
@@ -96,6 +108,7 @@ public class Character {
         this.aliases = aliases;
     }
 
+    @Override
     public String getUrl() {
         return url;
     }
@@ -104,6 +117,7 @@ public class Character {
         this.url = url;
     }
 
+    @Override
     public String getSpouse() {
         return spouse;
     }
@@ -112,6 +126,7 @@ public class Character {
         this.spouse = spouse;
     }
 
+    @Override
     public List<String> getAllegiances() {
         return allegiances;
     }
@@ -120,6 +135,7 @@ public class Character {
         this.allegiances = allegiances;
     }
 
+    @Override
     public List<String> getBooks() {
         return books;
     }
@@ -128,6 +144,7 @@ public class Character {
         this.books = books;
     }
 
+    @Override
     public List<String> getPovBooks() {
         return povBooks;
     }
@@ -136,14 +153,16 @@ public class Character {
         this.povBooks = povBooks;
     }
 
+    @Override
     public List<String> getTvSeries() {
-        return tvSeries;
+        return series;
     }
 
     public void setTvSeries(List<String> tvSeries) {
-        this.tvSeries = tvSeries;
+        this.series = tvSeries;
     }
 
+    @Override
     public List<String> getPlayedBy() {
         return playedBy;
     }
@@ -152,3 +171,5 @@ public class Character {
         this.playedBy = playedBy;
     }
 }
+
+

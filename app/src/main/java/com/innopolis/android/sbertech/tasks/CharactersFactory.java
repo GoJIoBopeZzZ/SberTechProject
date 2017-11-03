@@ -11,10 +11,6 @@ import com.innopolis.android.sbertech.models.CharacterFetcher;
 
 import java.util.List;
 
-/**
- * Created by _red_ on 22.07.17.
- */
-
 public class CharactersFactory extends AsyncTask<Void, Void, List<Character>> {
 
     private String startUrl;

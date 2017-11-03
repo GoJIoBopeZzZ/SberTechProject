@@ -1,6 +1,10 @@
 package com.innopolis.android.sbertech.models;
 
 import android.util.Log;
+import android.widget.Toast;
+
+import com.innopolis.android.sbertech.CharactersActivity;
+import com.innopolis.android.sbertech.models.impl.StringBuilderFromList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,11 +18,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-/**
- * Created by _red_ on 21.07.17.
- */
 
 public class CharacterFetcher {
     private static final String TAG = "CharacterFetcher";

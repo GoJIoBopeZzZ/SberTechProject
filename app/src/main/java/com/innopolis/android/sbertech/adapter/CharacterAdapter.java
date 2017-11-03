@@ -22,6 +22,7 @@ import java.util.List;
  */
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterHolder> {
+    private final String EXTRA_URL = "URL";
     private Context context;
     private final String TAG = "CharacterAdapter";
     private final String resource = "https://anapioficeandfire.com/api/characters/";
@@ -34,6 +35,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
 
     @Override
     public CharacterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.character_item, parent, false);
         return new CharacterHolder(view);
@@ -62,13 +64,14 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         private TextView tvBorn;
         private TextView tvDied;
         private ImageView ivPhoto;
+        private String url;
 
         CharacterHolder(View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tvName);
             tvGender = itemView.findViewById(R.id.tvGender);
-            tvCulture = itemView.findViewById(R.id.tvCulture);
+            tvCulture = itemView.findViewById(R.id.tvUrl);
             tvBorn = itemView.findViewById(R.id.tvBorn);
             tvDied = itemView.findViewById(R.id.tvDied);
             ivPhoto = itemView.findViewById(R.id.ivPhoto);
@@ -82,13 +85,14 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             tvCulture.setText(entry.getCulture());
             tvBorn.setText(entry.getBirthday());
             tvDied.setText(entry.getDied());
+            url = entry.getUrl();
             Log.d(TAG, "Entry added!" + entry.getUrl());
         }
 
         @Override
         public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CharacterDetails.class);
-//                intent.putExtra(EXTRA_TITLE, tvTitle.getText().toString());
+            Intent intent = new Intent(view.getContext(), CharacterDetails.class);
+            intent.putExtra(EXTRA_URL, url);
 //                intent.putExtra(EXTRA_DESCTIPTION, tvBody.getText().toString());
 //                intent.putExtra(EXTRA_IMAGE_URL, url);
                 context.startActivity(intent);
